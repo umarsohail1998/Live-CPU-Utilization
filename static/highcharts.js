@@ -32,7 +32,7 @@ $(document).ready(function() {
             }
         },
         title: {
-            text: 'Live random data'
+            text: 'Live Random data'
         },
         xAxis: {
             type: 'datetime',
@@ -48,7 +48,7 @@ $(document).ready(function() {
             }
         },
         series: [{
-            name: 'Random data',
+            name: 'CPU-1',
             data: []
         }]
     });

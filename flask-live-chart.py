@@ -2,9 +2,13 @@ import json
 from time import time
 from random import random
 from flask import Flask, render_template, make_response
+from psutil import *
 
-app = Flask(__name__)
 
+app = Flask(__name__, 
+            static_url_path='/static',
+            static_folder="/static")
+lt = []
 
 @app.route('/')
 def hello_world():
@@ -12,8 +16,7 @@ def hello_world():
 
 @app.route('/live-data')
 def live_data():
-    # Create a PHP array and echo it as JSON
-    data = [time() * 1000, random() * 100]
+    data = [time() * 1000, cpu_percent(0.1, percpu=True)]
     response = make_response(json.dumps(data))
     response.content_type = 'application/json'
     return response
